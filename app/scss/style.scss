@@ -52,36 +52,44 @@
 }
 .periodMenu,
 .boxMenu {
-    max-width: 900px;
+    max-width: 1450px;
     width: 100%;
     text-align: center;
     margin: 0 auto;
 }
 .periodList,
-.boxMenu {
+.boxList {
+    display: flex;
+    justify-content: space-around;
+    // flex-direction: row;
+    align-items: center;
     li {
-        display: inline-block;
-        text-align: center;
+        // display: inline-block;
+        // text-align: center;
         margin-right: 10px;
     }
     li + li {
         margin-left: 10px;
     }
-    a, div{
+    a,
+    div {
+        text-align: center;
         background-image: url(../images/button.png);
         background-position: center;
         background-size: 95%;
         background-repeat: no-repeat;
-        width: 260px;
-        height: 140px;
+        width: 450px;
+        height: 180px;
         font-size: 48px;
+        line-height: 50px;
         font-weight: 800;
         padding-top: 50px;
         opacity: 1;
         transform: scale(1);
         transition: opacity 0s, visibility 0s;
     }
-    a:hover, div:hover {
+    a:hover,
+    div:hover {
         background-image: url("../images/button-active.png");
         background-position-y: -15px;
         background-position-x: -15px;
@@ -167,16 +175,17 @@
 .boxMenu {
     max-width: 1100px;
     margin-top: 230px;
-    a, div{
+    a,
+    div {
         width: 320px;
-        height: 135px;
+        height: 150px;
         font-size: 36px;
     }
 }
 // .boxPhoto{
 //     display: none;
 // }
-.boxList div a{
+.boxList div a {
     display: none;
 }
 // .fancybox-bg {
@@ -194,40 +203,40 @@
 //     background-repeat: no-repeat;
 //     background-position: center center;
 //   }
-  
+
 //   .fancybox__container {
 //     --fancybox-bg: #000;
-  
+
 //     --fancybox-thumbs-width: 48px;
 //     --fancybox-thumbs-ratio: 1;
-  
+
 //     --carousel-button-bg: rgb(91 78 76 / 74%);
-  
+
 //     --carousel-button-svg-width: 24px;
 //     --carousel-button-svg-height: 24px;
-  
+
 //     --carousel-button-svg-stroke-width: 2.5;
 //   }
-  
+
 //   .fancybox__nav {
 //     --carousel-button-svg-width: 24px;
 //     --carousel-button-svg-height: 24px;
 //   }
-  
+
 //   .fancybox__nav .carousel__button.is-prev {
 //     left: 20px;
 //   }
-  
+
 //   .fancybox__nav .carousel__button.is-next {
 //     right: 20px;
 //   }
-  
+
 //   .carousel__button.is-close {
 //     right: auto;
 //     top: 20px;
 //     left: 20px;
 //   }
-  
+
 //   .fancybox__slide {
 //     padding: 8px 88px;
 //   }
