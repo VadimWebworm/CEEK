@@ -1,6 +1,6 @@
 const mainWrapper = document.querySelector('.mainWrapper');
 const main = document.getElementById('main');
-const periodInfoOne = document.getElementById('periodInfoOne');
+const periodInfoHome = document.getElementById('periodInfoHome');
 const periodInfoTwo = document.getElementById('periodInfoTwo');
 // const periodInfoThree = document.getElementById('periodInfoThree');
 
@@ -13,7 +13,7 @@ periodList.addEventListener('click', (e) => {
         mainWrapper.classList.add('invisible');
         main.classList.add('invisible');
         if (target.classList.contains('periodOne')) {
-            periodInfoOne.classList.remove('invisible');
+            periodInfoHome.classList.remove('invisible');
         } else if (target.classList.contains('periodTwo')) {
             periodInfoTwo.classList.remove('invisible');
         }
@@ -26,12 +26,12 @@ periodList.addEventListener('click', (e) => {
 function closePeriod(number) {
     let elemHiden = document.querySelector('.hiden');
     if (number == 'one') {
-        periodInfoOne.classList.add('invisible');
+        periodInfoHome.classList.add('invisible');
     } else if (number == 'two') {
         periodInfoTwo.classList.add('invisible');
     }
     // else (number == 'three'){
-    //     periodInfoOne.classList.add('invisible');
+    //     periodInfoHome.classList.add('invisible');
     // }
     main.classList.remove('invisible');
     mainWrapper.classList.remove('mainWrapperTrue');
