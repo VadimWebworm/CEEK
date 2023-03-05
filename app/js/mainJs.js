@@ -39,16 +39,52 @@ function closePeriod(number) {
     elemHiden.classList.remove('hiden');
 }
 
+Fancybox.bind('[data-fancybox="gallery"]', {
+    dragToClose: false,
+
+    Toolbar: {
+        display: {
+            left: ['close'],
+            middle: [],
+            right: [],
+        },
+    },
+
+    Images: {
+        zoom: false,
+    },
+
+    Thumbs: {
+        type: 'classic',
+    },
+
+    Carousel: {
+        transition: false,
+        friction: 0,
+    },
+
+    on: {
+        'Carousel.ready Carousel.change': (fancybox) => {
+            fancybox.container.style.setProperty(
+                '--bg-image',
+                `url("/${fancybox.getSlide().src}")`
+            );
+        },
+    },
+});
+
 // let boxOne = document.querySelector('.boxOne');
 // boxOne.addEventListener('click', (e) => {
-//     let photo = 2;
-//     for (let i = 1; i <= photo; i++) {
-//         let elemPhoto = document.createElement('a');
-//         elemPhoto.classList.add('boxPhoto');
-//         elemPhoto.setAttribute('data-fancybox', "gallery")
-//         elemPhoto.setAttribute('href', `images/one/photo/${i}.jpg`)
-//         boxOne.append(elemPhoto)
-//     }
+//     let boxOneWrapper = document.querySelector('.boxOneWrapper')
+//     boxOneWrapper.style.display = 'block';
+//     //    let photo = 2;
+//     //     for (let i = 1; i <= photo; i++) {
+//     //         let elemPhoto = document.createElement('a');
+//     //         elemPhoto.classList.add('boxPhoto');
+//     //         elemPhoto.setAttribute('data-fancybox', "gallery")
+//     //         elemPhoto.setAttribute('href', `images/one/photo/${i}.jpg`)
+//     //         boxOne.append(elemPhoto)
+//     //     }
 // })
 // function createElem() {
 //     let photo = 2;
@@ -63,3 +99,54 @@ function closePeriod(number) {
 // function removeElem(){
 
 // }
+// определяем настройки записи
+const audioOptions = {
+    audioBitsPerSecond : 128000,
+    mimeType : 'audio/wav'
+  };
+  
+  // создаем объект MediaRecorder
+  let mediaRecorder = null;
+  
+  // массив, в который будут записываться данные аудио
+  let audioChunks = [];
+  
+  // функция начала записи аудио
+  function startRecording() {
+    audioChunks = [];
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        mediaRecorder = new MediaRecorder(stream, audioOptions);
+        mediaRecorder.addEventListener("dataavailable", event => {
+          audioChunks.push(event.data);
+        });
+        mediaRecorder.addEventListener("stop", () => {
+          const audioBlob = new Blob(audioChunks, { type: audioOptions.mimeType });
+          const audioUrl = URL.createObjectURL(audioBlob);
+          const audio = new Audio(audioUrl);
+          audio.controls = true;
+          document.body.appendChild(audio);
+          const downloadLink = document.createElement("a");
+          downloadLink.href = audioUrl;
+          downloadLink.download = `recording-${Date.now()}.wav`;
+          downloadLink.click();
+        });
+        mediaRecorder.start();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+  
+  // функция остановки записи аудио
+  function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state !== "inactive") {
+      mediaRecorder.stop();
+    }
+  }
+  
+  // пример использования
+  startRecording();
+  setTimeout(() => {
+    stopRecording();
+  }, 5000); // остановить запись через 5 секунд

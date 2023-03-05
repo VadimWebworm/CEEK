@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEEK</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <link rel="stylesheet" href="css/libs.min.css">
     <link rel="stylesheet" href="css/style.min.css">
 
@@ -53,12 +54,18 @@
                         <nav class="boxMenu">
                             <ul class="boxList">
                                 <li>
-                                    <div data-fancybox="gallery" href="images/one/photo/1.jpg" class="boxOne">Фотографии
-                                        <a data-fancybox="gallery" href="images/one/photo/2.jpg" ></a>
-                                        <a data-fancybox="gallery" href="images/one/photo/3.jpg" ></a>
-                                        <a data-fancybox="gallery" href="images/one/photo/4.jpg" ></a>
-                                        <a data-fancybox="gallery" href="images/one/photo/5.jpg" ></a>
-                                        <a data-fancybox="gallery" href="images/one/photo/6.jpg" ></a>
+                                    <div data-fancybox="gallery" data-caption="" href="images/one/photo/1.jpg"
+                                        class="boxOne">Фотографии
+                                        <div class="boxOneWrapper">
+                                            <a data-fancybox="gallery" data-caption="Single image"
+                                                href="images/one/photo/2.jpg">
+                                            <img src="images/one/photo/2.jpg" alt=""></a>
+                                            <a data-fancybox="gallery" data-caption="Single image"
+                                                href="images/one/photo/3.jpg"></a>
+                                            <a data-fancybox="gallery" href="images/one/photo/4.jpg"></a>
+                                            <a data-fancybox="gallery" href="images/one/photo/5.jpg"></a>
+                                            <a data-fancybox="gallery" href="images/one/photo/6.jpg"></a>
+                                        </div>
                                     </div>
                                 </li>
                                 <li>
@@ -142,7 +149,7 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/libs.min.js"></script>
     <script src="js/mainJs.js"></script>
