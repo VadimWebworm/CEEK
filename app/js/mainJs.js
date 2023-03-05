@@ -39,7 +39,7 @@ function closePeriod(number) {
     elemHiden.classList.remove('hiden');
 }
 
-Fancybox.bind('[data-fancybox="gallery"]', {
+Fancybox.bind('[data-fancybox]', {
     dragToClose: false,
 
     Toolbar: {
@@ -100,53 +100,3 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 
 // }
 // определяем настройки записи
-const audioOptions = {
-    audioBitsPerSecond : 128000,
-    mimeType : 'audio/wav'
-  };
-  
-  // создаем объект MediaRecorder
-  let mediaRecorder = null;
-  
-  // массив, в который будут записываться данные аудио
-  let audioChunks = [];
-  
-  // функция начала записи аудио
-  function startRecording() {
-    audioChunks = [];
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(stream => {
-        mediaRecorder = new MediaRecorder(stream, audioOptions);
-        mediaRecorder.addEventListener("dataavailable", event => {
-          audioChunks.push(event.data);
-        });
-        mediaRecorder.addEventListener("stop", () => {
-          const audioBlob = new Blob(audioChunks, { type: audioOptions.mimeType });
-          const audioUrl = URL.createObjectURL(audioBlob);
-          const audio = new Audio(audioUrl);
-          audio.controls = true;
-          document.body.appendChild(audio);
-          const downloadLink = document.createElement("a");
-          downloadLink.href = audioUrl;
-          downloadLink.download = `recording-${Date.now()}.wav`;
-          downloadLink.click();
-        });
-        mediaRecorder.start();
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-  
-  // функция остановки записи аудио
-  function stopRecording() {
-    if (mediaRecorder && mediaRecorder.state !== "inactive") {
-      mediaRecorder.stop();
-    }
-  }
-  
-  // пример использования
-  startRecording();
-  setTimeout(() => {
-    stopRecording();
-  }, 5000); // остановить запись через 5 секунд
