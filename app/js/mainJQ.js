@@ -5,15 +5,15 @@ $(function () {
     setHeiHeight();
     $(window).resize(setHeiHeight);
 
-    $('[data-fancybox="gallery"]').fancybox({
-        animationEffect: "zoom",
-        transitionEffect: "fade",
-        buttons: [
-            "zoom",
-            "slideShow",
-            "fullScreen",
-            "thumbs",
-            "close"
-        ],
-    });
+    // $('[data-fancybox="gallery"]').fancybox({
+    //     animationEffect: "zoom",
+    //     transitionEffect: "fade",
+    //     buttons: [
+    //         "zoom",
+    //         "slideShow",
+    //         "fullScreen",
+    //         "thumbs",
+    //         "close"
+    //     ],
+    // });
 });
