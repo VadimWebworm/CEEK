@@ -39,6 +39,12 @@ function closePeriod(number) {
     elemHiden.classList.remove('hiden');
 }
 
+let boxTwo = document.querySelector('.boxTwo');
+let body = document.querySelector('body');
+boxTwo.addEventListener('click', function () {
+    if (body.classList.contains('nav-active')) body.classList.remove('nav-active'); else body.classList.add('nav-active');
+});
+
 Fancybox.bind('[data-fancybox]', {
     dragToClose: false,
 
@@ -72,6 +78,8 @@ Fancybox.bind('[data-fancybox]', {
         },
     },
 });
+
+
 
 // let boxOne = document.querySelector('.boxOne');
 // boxOne.addEventListener('click', (e) => {
